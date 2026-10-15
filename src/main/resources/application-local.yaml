@@ -1,0 +1,7 @@
+# Perfil por defecto: base H2 en archivo, solo para desarrollo en el PC.
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/audit;MODE=PostgreSQL;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:

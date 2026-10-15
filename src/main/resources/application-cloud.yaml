@@ -1,0 +1,19 @@
+# =====================================================================
+# Perfil "cloud": base de datos en la nube (AWS RDS).
+# Los datos de conexión se leen de variables de entorno.
+# Activar con: SPRING_PROFILES_ACTIVE=cloud
+#
+#   PostgreSQL: jdbc:postgresql://<endpoint-rds>:5432/<base>
+#   Oracle:     jdbc:oracle:thin:@//<endpoint-rds>:1521/<servicio>
+# =====================================================================
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:5}
+      connection-timeout: 10000
+  jpa:
+    hibernate:
+      ddl-auto: ${DB_DDL_AUTO:update}

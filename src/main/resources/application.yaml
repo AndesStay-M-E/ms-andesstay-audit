@@ -5,6 +5,20 @@ spring:
   application:
     name: ms-andesstay-audit
 
+  profiles:
+    default: local
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AZURE_ISSUER_URI:https://login.microsoftonline.com/24b1cd18-d18e-4855-bcaf-51ac2db566d5/v2.0}
+
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: ${RABBITMQ_PORT:5672}
