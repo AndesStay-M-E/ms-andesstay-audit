@@ -17,7 +17,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${AZURE_ISSUER_URI:https://login.microsoftonline.com/24b1cd18-d18e-4855-bcaf-51ac2db566d5/v2.0}
+          issuer-uri: ${AZURE_ISSUER_URI:https://login.microsoftonline.com/4fe52189-087c-4613-8660-500431cc0eb9/v2.0}
 
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
@@ -45,7 +45,7 @@ management:
         include: health,info
   endpoint:
     health:
-      show-details: always
+      show-details: when-authorized
 
 # =====================================================================
 # Nombres de mensajería centralizados (MessagingProperties).
@@ -70,3 +70,7 @@ andesstay:
 logging:
   level:
     cl.duoc.andesstay: INFO
+
+# Tokens are accepted only when intended for AndesStay API.
+andesstay-security:
+  allowed-audiences: ${AZURE_ALLOWED_AUDIENCES:85237aa5-9ece-48d3-8767-9698df0efefa,api://85237aa5-9ece-48d3-8767-9698df0efefa}
